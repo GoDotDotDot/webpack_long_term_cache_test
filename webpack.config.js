@@ -65,7 +65,7 @@ module.exports = function (env) {
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
       // vendor chunk
-      names: ['manifest', 'vendor'] // the name of bundle
+      names: ['manifest', 'vendor'].reverse() // the name of bundle
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'manifest',
@@ -167,7 +167,7 @@ module.exports = function (env) {
       vendor: ['react', 'react-dom', 'react-router-dom']
     },
     output: {
-      filename: isProd ? 'js/[name]-[hash].bundle.js' : 'js/[name].bundle.js',
+      filename: isProd ? 'js/[name]-[chunkhash].bundle.js' : 'js/[name].bundle.js',
       chunkFilename: isProd ? 'js/[id]-[chunkhash].bundle.js' : 'js/[id].bundle.js',
       path: distPath,
       publicPath: './'
